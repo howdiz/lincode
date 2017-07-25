@@ -5,7 +5,7 @@ words = sentence.split(' ')
 
 for word in words:
     print ''.join(reversed(word)),
-print "\n"    
+print "\n"
 
 first_hash = {
 	'data': {
@@ -47,6 +47,8 @@ def merge_hashes(first_hash, second_hash):
                 merged_hash[key] = first_hash[key] + second_hash[key]
         elif isinstance(second_hash[key], dict):
             merged_hash[key] = merge_hashes(first_hash[key], second_hash[key])
+
+    first_hash_keys = list(set(first_hash.keys()) - set(second_hash.keys()))
 
     return merged_hash
 
