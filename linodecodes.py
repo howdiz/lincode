@@ -1,10 +1,11 @@
-import collections
+import pprint
 
 sentence = "Linode is really cool"
 words = sentence.split(' ')
 
 for word in words:
     print ''.join(reversed(word)),
+print "\n"    
 
 first_hash = {
 	'data': {
@@ -42,8 +43,11 @@ def merge_hashes(first_hash, second_hash):
         if isinstance(second_hash[key], basestring) or isinstance(second_hash[key], int):
             merged_hash[key] = second_hash[key]
         elif isinstance(second_hash[key], list):
-            merged_hash[key] = first_hash[key] + second_hash[key]
+            if key in first_hash and key in second_hash:
+                merged_hash[key] = first_hash[key] + second_hash[key]
+        elif isinstance(second_hash[key], dict):
+            merged_hash[key] = merge_hashes(first_hash[key], second_hash[key])
 
     return merged_hash
 
-print merge_hashes(first_hash, second_hash)
+pprint.pprint(merge_hashes(first_hash, second_hash), width=1)
