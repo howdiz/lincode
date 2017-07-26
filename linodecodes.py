@@ -45,10 +45,16 @@ def merge_hashes(first_hash, second_hash):
         elif isinstance(second_hash[key], list):
             if key in first_hash and key in second_hash:
                 merged_hash[key] = first_hash[key] + second_hash[key]
+            else: 
+                merged_hash[key] = second_hash[key]
         elif isinstance(second_hash[key], dict):
             merged_hash[key] = merge_hashes(first_hash[key], second_hash[key])
 
     first_hash_keys = list(set(first_hash.keys()) - set(second_hash.keys()))
+
+    for key in first_hash_keys:
+        merged_hash[key] = first_hash[key]
+
 
     return merged_hash
 
