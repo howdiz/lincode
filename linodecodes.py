@@ -45,7 +45,7 @@ def merge_hashes(first_hash, second_hash):
         elif isinstance(second_hash[key], list):
             if key in first_hash and key in second_hash:
                 merged_hash[key] = first_hash[key] + second_hash[key]
-            else: 
+            else:
                 merged_hash[key] = second_hash[key]
         elif isinstance(second_hash[key], dict):
             merged_hash[key] = merge_hashes(first_hash[key], second_hash[key])
@@ -59,3 +59,32 @@ def merge_hashes(first_hash, second_hash):
     return merged_hash
 
 pprint.pprint(merge_hashes(first_hash, second_hash), width=1)
+
+a = [80,93,17,64,93,17,41,86,8,51,69,4,27,75,49,56,95,8,16,2,73,34,85,89,96,39,99,64,13,94,93,25,76,11,26,91,85,28,11,55,9,36,68,96,23,53,66,90,68,79,17,68,85,91,49,94,90,16,96,74,9,69,84,14,99,50,15,90,13,3,17,64,26,48,68,99,99,50,91,91,89,93,36,22,67,43,90,49,76,34,16,80,29,18,53,27,33,71,37,62]
+
+def find_dupes(a):
+    seen = set()
+    dupes = set()
+
+    for x in a:
+        if x in seen:
+            dupes.add(x)
+        else:
+            seen.add(x)
+
+    return list(dupes)
+
+print find_dupes(a)
+
+def print_permutations(string, position = 0):
+
+    if position == len(string):
+        print "".join(string)
+
+    for i in range(position, len(string)):
+
+        string_copy = [character for character in string]
+        string_copy[position], string_copy[i] = string_copy[i], string_copy[position]
+        print_permutations(string_copy, position + 1)
+
+print_permutations('cat')
