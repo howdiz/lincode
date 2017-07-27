@@ -88,3 +88,12 @@ def print_permutations(string, position = 0):
         print_permutations(string_copy, position + 1)
 
 print_permutations('cat')
+
+list1 = ['d','i','q','z','e','f','v','p','s','o','u','k','l','g','h','w','a','m','j','n','c','y','t','x','r','b']
+list2 = ['a','have','reward','end','sentencing','proving','words','the','not','sorry','clever','sorted','the','that','you','are','this','lists','correctly','but','be','the','more','hard','was','should']
+
+def sort_linked_lists(list1, list2):
+    sorted_tuples = sorted(zip(list1, list2), key=lambda tup: tup[0])
+    return zip(*sorted_tuples)[1]
+
+print sort_linked_lists(list1, list2)
