@@ -1,11 +1,16 @@
 import pprint
 
-sentence = "Linode is really cool"
-words = sentence.split(' ')
+def reverse_words(sentence):
+    words = sentence.split(' ')
+    reversified = ''
 
-for word in words:
-    print ''.join(reversed(word)),
-print "\n"
+    for word in words:
+        reversified = reversified + ''.join(reversed(word)) + " "
+
+    return reversified
+
+sentence = "Linode is really cool"
+print reverse_words(sentence)
 
 first_hash = {
 	'data': {
